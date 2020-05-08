@@ -37,54 +37,62 @@ for (let i = 1; i <= resGrid; i++) {                                   //creates
     };
 };
 
-function goBlack() {
-    
-    const gridElements = document.querySelectorAll('.elementGrid');
-    gridElements.forEach((div) => {div.addEventListener('mouseenter', turnBlack); } );
+function turnBlack(e) {
 
-    function turnBlack() {
-
-        this.classList.add('goBlack');
-    }
+    this.style.backgroundColor = 'black';
+    this.style.borderColor = 'black';        
 }
 
+function goBlack() {
+
+    const gridElements = document.querySelectorAll('.elementGrid');
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', decreaseBrightness); });
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', randomColor); });
+    gridElements.forEach((div) => { div.addEventListener('mouseenter', turnBlack); });
+
+}
+
+function decreaseBrightness() {
+
+    const style = window.getComputedStyle(this);
+    const backgroundColorValue = style.getPropertyValue('background-color');                //getting 'rgb(x, x, x)'
+    const endSlice = backgroundColorValue.indexOf(',');
+    const valueColor = backgroundColorValue.slice('4', endSlice);                           //getting just one number x as string
+
+    const newValueColor = valueColor - (valueColor*0.1);
+
+    const borderColorvalue = style.getPropertyValue('border-top-color');                    //same logic for border color        
+    const endSliceBorder = borderColorvalue.indexOf(',');
+    const valueColorBorder = borderColorvalue.slice('4', endSliceBorder);                           
+    
+    const newValueColorBorder = valueColorBorder - (valueColorBorder*0.061);                //different rate to reach 0 at the same time
+
+    this.style.backgroundColor = `rgb(${newValueColor},${newValueColor},${newValueColor})`;
+    this.style.borderColor = `rgb(${newValueColorBorder},${newValueColorBorder},${newValueColorBorder})`;
+}
 
 function goGradient() {
 
     const gridElements = document.querySelectorAll('.elementGrid');
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', turnBlack); });
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', randomColor); });
     gridElements.forEach((div) => {div.addEventListener('mouseenter', decreaseBrightness); } );
 
-    function decreaseBrightness() {
+}
 
-        const style = window.getComputedStyle(this);
-        const backgroundColorValue = style.getPropertyValue('background-color');                //getting 'rgb(x, x, x)'
-        const endSlice = backgroundColorValue.indexOf(',');
-        const valueColor = backgroundColorValue.slice('4', endSlice);                           //getting just one number x as string
+function randomColor() {
+    let randomRGB = []; 
+    
+    for (let i=0; i<3; i++) { randomRGB[i] = Math.random()*255; }
 
-        const newValueColor = valueColor - (valueColor*0.1);
-
-        const borderColorvalue = style.getPropertyValue('border-top-color');                    //same logic for border color        
-        const endSliceBorder = borderColorvalue.indexOf(',');
-        const valueColorBorder = borderColorvalue.slice('4', endSliceBorder);                           
-        
-        const newValueColorBorder = valueColorBorder - (valueColorBorder*0.061);                //different rate to reach 0 at the same time
-
-        this.style.backgroundColor = `rgb(${newValueColor},${newValueColor},${newValueColor})`;
-        this.style.borderColor = `rgb(${newValueColorBorder},${newValueColorBorder},${newValueColorBorder})`;
-    }
+    this.style.backgroundColor = `rgb(${randomRGB[0]},${randomRGB[1]},${randomRGB[2]})`;
+    this.style.borderColor     = `rgb(${randomRGB[0]},${randomRGB[1]},${randomRGB[2]})`;
 }
 
 function goRandom() {
  
     const gridElements = document.querySelectorAll('.elementGrid');
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', decreaseBrightness); });
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', turnBlack); });
     gridElements.forEach((div) => {div.addEventListener('mouseenter', randomColor); } );
-
-    function randomColor() {
-        let randomRGB = []; 
-        
-        for (let i=0; i<3; i++) { randomRGB[i] = Math.random()*255; }
-
-        this.style.backgroundColor = `rgb(${randomRGB[0]},${randomRGB[1]},${randomRGB[2]})`;
-        this.style.borderColor     = `rgb(${randomRGB[0]},${randomRGB[1]},${randomRGB[2]})`;
-    }
 }
