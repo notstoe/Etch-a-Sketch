@@ -1,10 +1,14 @@
 .elementGrid {
-    border: 1px solid;
+    border: 1px solid rgb(100, 100, 100);
 }
 
 .containerGrid {
-    display: flex;
     width: 500px;
     height: 500px;
-    border: 1px solid;
+    border: 1px solid rgb(100, 100, 100);
+    margin: 30px auto;
+}
+
+.row {
+    display: flex;
 }
