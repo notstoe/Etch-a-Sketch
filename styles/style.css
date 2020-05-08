@@ -1,0 +1,10 @@
+.elementGrid {
+    border: 1px solid;
+}
+
+.containerGrid {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    border: 1px solid;
+}
