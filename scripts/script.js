@@ -37,40 +37,45 @@ for (let i = 1; i <= resGrid; i++) {                                   //creates
     };
 };
 
-
-
-/*const gridElements = document.querySelectorAll('.elementGrid');
-gridElements.forEach((div) => {div.addEventListener('mouseenter', turnBlack); } );
-
-function turnBlack() {
-
-    this.classList.add('goBlack');
-
-}*/
-
-
-/*
-const gridElements = document.querySelectorAll('.elementGrid');
-gridElements.forEach((div) => {div.addEventListener('mouseenter', decreaseBrightness); } );
-
-function decreaseBrightness() {
-
-    const style = window.getComputedStyle(this);
-    const backgroundColorValue = style.getPropertyValue('background-color');                //getting 'rgb(x, x, x)'
-    const endSlice = backgroundColorValue.indexOf(',');
-    const valueColor = backgroundColorValue.slice('4', endSlice);                           //getting just one number x as string
-
-    const newValueColor = valueColor - (valueColor*0.1);
-
-    const borderColorvalue = style.getPropertyValue('border-top-color');                    //same logic for border color        
-    const endSliceBorder = borderColorvalue.indexOf(',');
-    const valueColorBorder = borderColorvalue.slice('4', endSliceBorder);                           
+function goBlack() {
     
-    const newValueColorBorder = valueColorBorder - (valueColorBorder*0.1);
+    const gridElements = document.querySelectorAll('.elementGrid');
+    gridElements.forEach((div) => {div.addEventListener('mouseenter', turnBlack); } );
 
-    this.style.backgroundColor = `rgb(${newValueColor},${newValueColor},${newValueColor})`;
-    this.style.borderColor = `rgb(${newValueColorBorder},${newValueColorBorder},${newValueColorBorder})`;
+    function turnBlack() {
+
+        this.classList.add('goBlack');
+    }
+}
+
+
+function goGradient() {
+
+    const gridElements = document.querySelectorAll('.elementGrid');
+    gridElements.forEach((div) => {div.addEventListener('mouseenter', decreaseBrightness); } );
+
+    function decreaseBrightness() {
+
+        const style = window.getComputedStyle(this);
+        const backgroundColorValue = style.getPropertyValue('background-color');                //getting 'rgb(x, x, x)'
+        const endSlice = backgroundColorValue.indexOf(',');
+        const valueColor = backgroundColorValue.slice('4', endSlice);                           //getting just one number x as string
+
+        const newValueColor = valueColor - (valueColor*0.1);
+
+        const borderColorvalue = style.getPropertyValue('border-top-color');                    //same logic for border color        
+        const endSliceBorder = borderColorvalue.indexOf(',');
+        const valueColorBorder = borderColorvalue.slice('4', endSliceBorder);                           
+        
+        const newValueColorBorder = valueColorBorder - (valueColorBorder*0.061);                //different rate to reach 0 at the same time
+
+        this.style.backgroundColor = `rgb(${newValueColor},${newValueColor},${newValueColor})`;
+        this.style.borderColor = `rgb(${newValueColorBorder},${newValueColorBorder},${newValueColorBorder})`;
+    }
 
 }
 
-*/
+function random() {
+ 
+    console.log('random');
+}
