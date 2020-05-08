@@ -72,10 +72,19 @@ function goGradient() {
         this.style.backgroundColor = `rgb(${newValueColor},${newValueColor},${newValueColor})`;
         this.style.borderColor = `rgb(${newValueColorBorder},${newValueColorBorder},${newValueColorBorder})`;
     }
-
 }
 
-function random() {
+function goRandom() {
  
-    console.log('random');
+    const gridElements = document.querySelectorAll('.elementGrid');
+    gridElements.forEach((div) => {div.addEventListener('mouseenter', randomColor); } );
+
+    function randomColor() {
+        let randomRGB = []; 
+        
+        for (let i=0; i<3; i++) { randomRGB[i] = Math.random()*255; }
+
+        this.style.backgroundColor = `rgb(${randomRGB[0]},${randomRGB[1]},${randomRGB[2]})`;
+        this.style.borderColor     = `rgb(${randomRGB[0]},${randomRGB[1]},${randomRGB[2]})`;
+    }
 }
