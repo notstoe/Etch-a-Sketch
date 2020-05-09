@@ -124,7 +124,6 @@ function goColor(e) {
     gridElements.forEach((div) => { div.addEventListener('mouseenter', turnColor); });
     
     userColor = e.target.value;
-
 }
 
 const blackButton = document.querySelector('#goBlack');
@@ -137,18 +136,30 @@ const randomButton = document.querySelector('#goRandom');
 randomButton.addEventListener('click', goRandom);
 
 const colorButton = document.querySelector('#goColor');
+colorButton.addEventListener('click', goColor);
 colorButton.addEventListener('change', goColor);
 
 const resetButton = document.querySelector('#reset');
-resetButton.addEventListener('click', reset)
+resetButton.addEventListener('click', reset);
 
 function reset() {
 
     const containerGrid = document.querySelector('.containerGrid');
     const newContainerGrid = document.createElement('div');
     newContainerGrid.classList.add('containerGrid');
-
     containerGrid.replaceWith(newContainerGrid);
 
     createGrid(resGridUser);
 }
+
+/*
+const changeResolutionButton = document.querySelector('#changeRes');
+changeResolutionButton.addEventListener('click', changeGridResolution);
+
+function userchoiceResolution(){
+
+}
+
+function changeGridResolution() {
+
+} */
