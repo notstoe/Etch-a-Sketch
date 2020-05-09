@@ -1,6 +1,5 @@
-let resGrid = 32;
-
-const containerGrid = document.querySelector('.containerGrid');
+let resGridUser = 32;
+let userColor;
 
 const getWidth = function(targetElement) {
 
@@ -20,24 +19,31 @@ const getHeight = function(targetElement) {
     return heightValue;                                                 //returns string
 }
 
-for (let i = 1; i <= resGrid; i++) {                                   //creates the grid and sets width and height of elements
+function createGrid(resolutionGrid) {
+   
+    const containerGrid = document.querySelector('.containerGrid');
 
-    const rowDiv = document.createElement('div');
-    rowDiv.classList.add('row');
-    rowDiv.style.height = `${getHeight(containerGrid)/resGrid}px`;
-    containerGrid.appendChild(rowDiv);
-    
+    for (let i = 1; i <= resolutionGrid; i++) {                                   //creates the grid and sets width and height of elements
 
-    for (let j = 1; j <= resGrid; j++) {
-    
-        const elementDiv = document.createElement('div');
-        elementDiv.classList.add('elementGrid');
-        elementDiv.style.width = `${getWidth(containerGrid)/resGrid}px`;
-        rowDiv.appendChild(elementDiv);
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('row');
+        rowDiv.style.height = `${getHeight(containerGrid)/resolutionGrid}px`;
+        containerGrid.appendChild(rowDiv);
+        
+
+        for (let j = 1; j <= resolutionGrid; j++) {
+        
+            const elementDiv = document.createElement('div');
+            elementDiv.classList.add('elementGrid');
+            elementDiv.style.width = `${getWidth(containerGrid)/resolutionGrid}px`;
+            rowDiv.appendChild(elementDiv);
+        };
     };
-};
+}
 
-function turnBlack(e) {
+createGrid(resGridUser);                    //creates initial grid
+
+function turnBlack() {
 
     this.style.backgroundColor = 'black';
     this.style.borderColor = 'black';        
@@ -48,6 +54,7 @@ function goBlack() {
     const gridElements = document.querySelectorAll('.elementGrid');
     gridElements.forEach((div) => { div.removeEventListener('mouseenter', decreaseBrightness); });
     gridElements.forEach((div) => { div.removeEventListener('mouseenter', randomColor); });
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', turnColor); });
     gridElements.forEach((div) => { div.addEventListener('mouseenter', turnBlack); });
 
 }
@@ -78,6 +85,7 @@ function goGradient() {
     const gridElements = document.querySelectorAll('.elementGrid');
     gridElements.forEach((div) => { div.removeEventListener('mouseenter', turnBlack); });
     gridElements.forEach((div) => { div.removeEventListener('mouseenter', randomColor); });
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', turnColor); });
     gridElements.forEach((div) => {div.addEventListener('mouseenter', decreaseBrightness); } );
 
 }
@@ -96,7 +104,27 @@ function goRandom() {
     const gridElements = document.querySelectorAll('.elementGrid');
     gridElements.forEach((div) => { div.removeEventListener('mouseenter', decreaseBrightness); });
     gridElements.forEach((div) => { div.removeEventListener('mouseenter', turnBlack); });
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', turnColor); });
     gridElements.forEach((div) => {div.addEventListener('mouseenter', randomColor); } );
+}
+
+function turnColor() {
+
+    
+    this.style.backgroundColor = userColor;
+    this.style.borderColor = userColor;        
+}
+
+function goColor(e) {
+
+    const gridElements = document.querySelectorAll('.elementGrid');
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', decreaseBrightness); });
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', randomColor); });
+    gridElements.forEach((div) => { div.removeEventListener('mouseenter', turnBlack); });
+    gridElements.forEach((div) => { div.addEventListener('mouseenter', turnColor); });
+    
+    userColor = e.target.value;
+
 }
 
 const blackButton = document.querySelector('#goBlack');
@@ -108,4 +136,19 @@ gradientButton.addEventListener('click', goGradient);
 const randomButton = document.querySelector('#goRandom');
 randomButton.addEventListener('click', goRandom);
 
+const colorButton = document.querySelector('#goColor');
+colorButton.addEventListener('change', goColor);
 
+const resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', reset)
+
+function reset() {
+
+    const containerGrid = document.querySelector('.containerGrid');
+    const newContainerGrid = document.createElement('div');
+    newContainerGrid.classList.add('containerGrid');
+
+    containerGrid.replaceWith(newContainerGrid);
+
+    createGrid(resGridUser);
+}

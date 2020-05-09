@@ -19,3 +19,11 @@
     background-color: black;
     border-color: black;
 }
+
+.containerButtons{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    width: 420px;
+    margin: 0 auto;
+}
