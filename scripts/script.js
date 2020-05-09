@@ -98,3 +98,14 @@ function goRandom() {
     gridElements.forEach((div) => { div.removeEventListener('mouseenter', turnBlack); });
     gridElements.forEach((div) => {div.addEventListener('mouseenter', randomColor); } );
 }
+
+const blackButton = document.querySelector('#goBlack');
+blackButton.addEventListener('click', goBlack);
+
+const gradientButton = document.querySelector('#goGradient');
+gradientButton.addEventListener('click', goGradient);
+
+const randomButton = document.querySelector('#goRandom');
+randomButton.addEventListener('click', goRandom);
+
+
