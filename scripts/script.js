@@ -158,27 +158,39 @@ changeResolutionButton.addEventListener('click', changeGridResolution);
 function changeGridResolution() {
 
     let resGridUserStr = window.prompt('Enter the number of squares desired (e.g. if you enter 32, it\'ll be a 32x32 grid):', '32');           //getting string with response
-    resGridUser = Number(resGridUserStr);
 
-    if (resGridUser >= 100) {
+    if (resGridUserStr === null) return;                                    //stops the function if cancel is chosen
 
-        let confirmation = window.prompt('Warning! Values over 100 might crash your browser! Are you sure you wanna continue? (Type Yes or No)','No');
-        
-        let confirmationLowerCase = confirmation.toLowerCase();
-            
-        if (confirmationLowerCase === 'yes') {
+    resGridUser = Number(resGridUserStr);               
+    let integerTest = Number.isInteger(resGridUser);
 
-            reset()
+    if (!integerTest || resGridUser == 0) {
 
-        } else if (confirmationLowerCase === 'no') {
-
-            changeGridResolution();
-        }
-
-
+        alert('Please enter a positive integer number!');
+        changeGridResolution();
+    
     } else {
-        reset();
+
+        if (resGridUser >= 50) {
+
+            let confirmation = window.prompt('Warning! Values over 100 might crash your browser! Are you sure you wanna continue? (Type Yes or No)','No');
+            
+            if (confirmation === null) return;                                      //closes if it`s cancel
+
+            let confirmationLowerCase = confirmation.toLowerCase();
+
+            if (confirmationLowerCase === 'yes') {
+
+                reset()
+
+            } else if (confirmationLowerCase === 'no') {
+
+                changeGridResolution();
+            }
+
+
+        } else {
+            reset();
+        } 
     }
-
-
-} 
+}
