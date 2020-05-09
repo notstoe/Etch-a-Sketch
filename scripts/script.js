@@ -56,19 +56,21 @@ function decreaseBrightness() {
 
     const style = window.getComputedStyle(this);
     const backgroundColorValue = style.getPropertyValue('background-color');                //getting 'rgb(x, x, x)'
-    const endSlice = backgroundColorValue.indexOf(',');
-    const valueColor = backgroundColorValue.slice('4', endSlice);                           //getting just one number x as string
+    const firstComma = backgroundColorValue.indexOf(',');
+    const firstSpace = backgroundColorValue.indexOf(' ');
+    const lastComma = backgroundColorValue.lastIndexOf(',');
+    const lastSpace = backgroundColorValue.lastIndexOf(' ');
 
-    const newValueColor = valueColor - (valueColor*0.1);
+    const valueColorR = backgroundColorValue.slice('4', firstComma);                           //getting each number x as string
+    const valueColorG = backgroundColorValue.slice((firstSpace+1), lastComma);
+    const valueColorB = backgroundColorValue.slice((lastSpace+1),-1);
 
-    const borderColorvalue = style.getPropertyValue('border-top-color');                    //same logic for border color        
-    const endSliceBorder = borderColorvalue.indexOf(',');
-    const valueColorBorder = borderColorvalue.slice('4', endSliceBorder);                           
-    
-    const newValueColorBorder = valueColorBorder - (valueColorBorder*0.061);                //different rate to reach 0 at the same time
-
-    this.style.backgroundColor = `rgb(${newValueColor},${newValueColor},${newValueColor})`;
-    this.style.borderColor = `rgb(${newValueColorBorder},${newValueColorBorder},${newValueColorBorder})`;
+    const newValueColorR = valueColorR - (valueColorR*0.1);
+    const newValueColorG = valueColorG - (valueColorG*0.1);
+    const newValueColorB = valueColorB - (valueColorB*0.1);
+ 
+    this.style.backgroundColor = `rgb(${newValueColorR},${newValueColorG},${newValueColorB})`;
+    this.style.borderColor = `rgb(${newValueColorR},${newValueColorG},${newValueColorB})`;
 }
 
 function goGradient() {
