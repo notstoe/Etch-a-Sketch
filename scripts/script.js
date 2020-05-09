@@ -152,14 +152,33 @@ function reset() {
     createGrid(resGridUser);
 }
 
-/*
 const changeResolutionButton = document.querySelector('#changeRes');
 changeResolutionButton.addEventListener('click', changeGridResolution);
 
-function userchoiceResolution(){
-
-}
-
 function changeGridResolution() {
 
-} */
+    let resGridUserStr = window.prompt('Enter the number of squares desired (e.g. if you enter 32, it\'ll be a 32x32 grid):', '32');           //getting string with response
+    resGridUser = Number(resGridUserStr);
+
+    if (resGridUser >= 100) {
+
+        let confirmation = window.prompt('Warning! Values over 100 might crash your browser! Are you sure you wanna continue? (Type Yes or No)','No');
+        
+        let confirmationLowerCase = confirmation.toLowerCase();
+            
+        if (confirmationLowerCase === 'yes') {
+
+            reset()
+
+        } else if (confirmationLowerCase === 'no') {
+
+            changeGridResolution();
+        }
+
+
+    } else {
+        reset();
+    }
+
+
+} 
