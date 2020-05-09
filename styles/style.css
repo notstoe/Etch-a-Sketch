@@ -8,7 +8,7 @@
     width: 640px;
     height: 640px;
     border: 1px solid rgb(0, 0, 0);
-    margin: 30px auto;
+    margin: 0px auto;
 }
 
 .row {
@@ -23,7 +23,23 @@
 .containerButtons{
     display: flex;
     align-items: stretch;
-    justify-content: space-evenly;
-    width: 540px;
-    margin: 0 auto;
+    justify-content: flex-start;
+    width: 640px;
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
+
+.button {
+    color: black;
+    background-color: white;
+    border: 2px solid;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-left: -1px;
+}
+
+#goColor {
+    padding: 2px 5px 2px 5px;
+}
+
