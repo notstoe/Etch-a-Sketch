@@ -1,3 +1,12 @@
+body {
+    background-image: url('/home/notstoe/the_odin_project/Etch-a-Sketch/images/backgroundImage.jpg');
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    font-family: 'Special Elite', cursive;
+ 
+}
+
 .elementGrid {
     border: 1px solid;
     background-color: rgb(255, 255, 255);
@@ -9,6 +18,7 @@
     height: 640px;
     border: 1px solid rgb(0, 0, 0);
     margin: 0px auto;
+    margin-bottom: 40px;
 }
 
 .row {
@@ -28,18 +38,46 @@
     margin: 0px auto;
     margin-top: 30px;
     margin-bottom: 10px;
+    height: 26px;
 }
 
 .button {
     color: black;
-    background-color: white;
+    background-color: rgb(235,235,235);
     border: 2px solid;
     border-radius: 4px;
     margin-right: 10px;
     margin-left: -1px;
+    transition-duration: 0.001s: 
+}
+
+.button:hover {
+    transform: scale(1.02);
+    border-color: white;
 }
 
 #goColor {
     padding: 2px 5px 2px 5px;
+    height: 26px;
 }
 
+#github{
+    width: 50px;
+}
+
+.containerTitle {
+    width: 1100px;
+    margin: 0 auto;
+    color: black;
+    text-align: center;
+    margin-top: -9px;
+}
+
+#pageTitle {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+#pageDescription {
+    font-size: 27px;
+}
