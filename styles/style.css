@@ -43,7 +43,7 @@ body {
 
 .button {
     color: black;
-    background-color: rgb(235,235,235);
+    background-color: rgb(221, 221, 231);
     border: 2px solid;
     border-radius: 4px;
     margin-right: 10px;
@@ -54,6 +54,11 @@ body {
 .button:hover {
     transform: scale(1.02);
     border-color: white;
+}
+
+.button:active {
+    box-shadow: inset 2px 2px 1px black;
+    transform: scale(1.01);
 }
 
 #goColor {
