@@ -1,5 +1,5 @@
 body {
-    background-image: url('/home/notstoe/the_odin_project/Etch-a-Sketch/images/backgroundImage.jpg');
+    background-image: url('../images/backgroundImage.jpg');
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
