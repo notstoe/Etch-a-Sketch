@@ -171,9 +171,9 @@ function changeGridResolution() {
     
     } else {
 
-        if (resGridUser >= 50) {
+        if (resGridUser >= 64) {
 
-            let confirmation = window.prompt('Warning! Values over 100 might crash your browser! Are you sure you wanna continue? (Type Yes or No)','No');
+            let confirmation = window.prompt('Warning! Values over 64 might crash your browser! Are you sure you wanna continue? (Type Yes or No)','No');
             
             if (confirmation === null) return;                                      //closes if it`s cancel
 
