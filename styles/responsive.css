@@ -1,0 +1,69 @@
+@media (max-width: 768px) {
+  
+  
+  #github {
+    width: 6vw;
+    height: 6vw;
+  }
+  
+  .containerTitle{
+    width: 95vw;
+  }
+  
+  .containerTitle #pageTitle{
+    font-size: 6.7vw;
+    text-align: center;
+  }
+  
+  .containerTitle #pageDescription {
+    font-size: 3vw;
+    margin-top: -2vw;
+  }
+  
+  .containerButtons {
+    width: 85vw;
+  }
+  
+  .button {
+    font-size: 2.1vw;
+    width: 12.5vw;
+    height: 6.6vw;
+    margin-top: -2vw;
+  }
+  
+  .containerGrid {
+    width: 85vw;
+    height: 93.1vw;
+  }
+  
+  .containerButtons #changeRes {
+    width: 30vw;
+    
+  }
+  
+  #goColor {
+    height: 6.6vw;
+  }
+}
+
+@media (max-width: 375px) {
+  .button {
+    margin-top: 1.5vw;
+    height: 7.5vw;
+    width: 17vw;
+  }
+  
+  #goColor {
+    height: 7.5vw;
+  }
+  
+  .containerButtons {
+    width: 91vw;
+  }
+  
+    .containerTitle #pageDescription {
+    margin-top: 0vw;
+    margin-bottom: -3vw;
+    font-size: 3.5vw;
+  }
+}
