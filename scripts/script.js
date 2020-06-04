@@ -4,7 +4,7 @@ let userColor;
 const getWidth = function(targetElement) {
 
     const style = window.getComputedStyle(targetElement);
-    const widthStr = style.getPropertyValue('width');                //getting '500px';
+    const widthStr = style.getPropertyValue('width');                //gets current width;
     const widthValue = widthStr.replace('px', '');
 
     return widthValue;                                              //returns string
@@ -13,7 +13,7 @@ const getWidth = function(targetElement) {
 const getHeight = function(targetElement) {
 
     const style = window.getComputedStyle(targetElement);
-    const heightStr = style.getPropertyValue('height');                //getting '500px';
+    const heightStr = style.getPropertyValue('height');                //gets current height;
     const heightValue = heightStr.replace('px', '');
 
     return heightValue;                                                 //returns string
